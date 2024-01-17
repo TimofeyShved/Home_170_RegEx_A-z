@@ -15,5 +15,11 @@ public class Main {
             System.out.println(m.start() + " " + m.group() +" ");
         }
 
+        // Находим слово
+        Pattern p2 = Pattern.compile("cat");
+        Matcher m2 = p2.matcher("About a cats and dogs");
+        while (m2.find()){
+            System.out.println(m2.start() + " " + m2.group() +" ");
+        }
     }
 }
