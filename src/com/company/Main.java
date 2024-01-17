@@ -21,5 +21,15 @@ public class Main {
         while (m2.find()){
             System.out.println(m2.start() + " " + m2.group() +" ");
         }
+
+        // Находим выражение
+        // можно использовать \\
+        //Pattern p3 = Pattern.compile("1\\+1=2");
+        // или \\Q \\E (дословно)
+        Pattern p3 = Pattern.compile("\\Q1+1=2\\E");
+        Matcher m3 = p3.matcher("22+1=23, 1+1=2, 2*4=8");
+        while (m3.find()){
+            System.out.println(m3.start() + " " + m3.group() +" ");
+        }
     }
 }
