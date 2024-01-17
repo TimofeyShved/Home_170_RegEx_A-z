@@ -31,5 +31,13 @@ public class Main {
         while (m3.find()){
             System.out.println(m3.start() + " " + m3.group() +" ");
         }
+
+        // Находим слово
+        // можно использовать []
+        Pattern p4 = Pattern.compile("gr[ae]y");
+        Matcher m4 = p4.matcher("gruy, gramy, grey, gray, groy, greay");
+        while (m4.find()){
+            System.out.println(m4.start() + " " + m4.group() +" ");
+        }
     }
 }
