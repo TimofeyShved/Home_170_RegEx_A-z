@@ -39,5 +39,21 @@ public class Main {
         while (m4.find()){
             System.out.println(m4.start() + " " + m4.group() +" ");
         }
+
+        // Находим слово g[]
+        // нужно использовать [] в данном случае находит все "g" кроме "gu"
+        Pattern p5 = Pattern.compile("g[^u]");
+        Matcher m5 = p5.matcher("grl, gat, gub");
+        while (m5.find()){
+            System.out.println(m5.start() + " " + m5.group() +" ");
+        }
+
+        // ]\^-  спец символы
+        //  [\\x]   - экранирование находит \х
+        //  [^x]    - не Х, пропускает все х
+        //  [x^]    - не спец символ, ищет ^
+        //  [^]x]   - не ]
+        //  [-x]    - не спец символ
+        //  [x-]    - не спец символ
     }
 }
