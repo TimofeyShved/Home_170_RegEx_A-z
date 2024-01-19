@@ -8,21 +8,29 @@ public class Main {
     public static void main(String[] args) {
 	    // Регулярные выражения (фильтр)
 
-        // Находим символ
+        // -----------------------------------  Находим символ
         Pattern p = Pattern.compile("a");
         Matcher m = p.matcher("Jack is a boy");
         while (m.find()){
             System.out.println(m.start() + " " + m.group() +" ");
         }
 
-        // Находим слово
+        // -----------------------------------  Находим слово
         Pattern p2 = Pattern.compile("cat");
         Matcher m2 = p2.matcher("About a cats and dogs");
         while (m2.find()){
             System.out.println(m2.start() + " " + m2.group() +" ");
         }
 
-        // Находим выражение
+        // Находим слово 2
+        // можно использовать []
+        Pattern p4 = Pattern.compile("gr[ae]y");
+        Matcher m4 = p4.matcher("gruy, gramy, grey, gray, groy, greay");
+        while (m4.find()){
+            System.out.println(m4.start() + " " + m4.group() +" ");
+        }
+
+        // -----------------------------------  Находим выражение
         // можно использовать \\
         //Pattern p3 = Pattern.compile("1\\+1=2");
         // или \\Q \\E (дословно)
@@ -32,13 +40,13 @@ public class Main {
             System.out.println(m3.start() + " " + m3.group() +" ");
         }
 
-        // Находим слово
-        // можно использовать []
-        Pattern p4 = Pattern.compile("gr[ae]y");
-        Matcher m4 = p4.matcher("gruy, gramy, grey, gray, groy, greay");
-        while (m4.find()){
-            System.out.println(m4.start() + " " + m4.group() +" ");
-        }
+        // -----------------------------------   ]\^-  спец символы
+        //  [\\x]   - экранирование находит \х
+        //  [^x]    - не Х, пропускает все х
+        //  [x^]    - не спец символ, ищет ^
+        //  [^]x]   - не ]
+        //  [-x]    - не спец символ
+        //  [x-]    - не спец символ
 
         // Находим слово g[]
         // нужно использовать [] в данном случае находит все "g" кроме "gu"
@@ -48,12 +56,17 @@ public class Main {
             System.out.println(m5.start() + " " + m5.group() +" ");
         }
 
-        // ]\^-  спец символы
-        //  [\\x]   - экранирование находит \х
-        //  [^x]    - не Х, пропускает все х
-        //  [x^]    - не спец символ, ищет ^
-        //  [^]x]   - не ]
-        //  [-x]    - не спец символ
-        //  [x-]    - не спец символ
+        // ----------------------------------- специальные буквы
+        //  \d - [0-9]
+        //  \w - [A-Za-z0-9]
+        //  \s - [ \t] находим табуляции и пробелы
+        //  \D - [^d\] всё кроме цифр
+        //  \W - [^w\] всё кроме букв и цифр
+        //  \S - [^s\] всё кроме пробелов и табуляций
+        Pattern p6 = Pattern.compile("\\d");
+        Matcher m6 = p6.matcher("1abc 5sadr7f");
+        while (m6.find()){
+            System.out.println(m6.start() + " " + m6.group() +" ");
+        }
     }
 }
